@@ -130,7 +130,7 @@ let workoutSeed = [
 const runFunc = async () => {
   const entries = await getAllData();
   console.log(entries);
-  if (!entries) {
+  if (entries.length == 0 || !entries) {
     Workout.deleteMany({})
       .then(() => Workout.collection.insertMany(workoutSeed))
       .then((data) => {
