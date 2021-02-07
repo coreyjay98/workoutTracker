@@ -1,9 +1,10 @@
 const express = require('express');
+const ck = require('ckey');
 const runFunc = require('./seeders/seed');
 
 const app = express();
 
-const PORT = 8080;
+const PORT = ck.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
