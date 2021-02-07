@@ -132,15 +132,17 @@ const runFunc = async () => {
   if (entries.length == 0 || !entries) {
     Workout.deleteMany({})
       .then(() => Workout.collection.insertMany(workoutSeed))
-      .then((data) => {
+      .then(async (data) => {
         console.log(data.result.n + ' records inserted!');
+        const entries = await getAllData();
+        await totalDurationSeed(entries);
       })
       .catch((err) => {
         console.error(err);
         process.exit(1);
       });
   } else {
-    totalDurationSeed(entries);
+    await totalDurationSeed(entries);
     return console.log('Already Seeded');
   }
 };

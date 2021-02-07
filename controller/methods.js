@@ -38,7 +38,6 @@ module.exports = {
   },
   totalDurationSeed: async function (workoutData) {
     for await (const workout of workoutData) {
-      console.log('total', workout.totalDuration);
       workout.totalDuration = 0;
       const { exercises } = workout;
       const totalDuration = exercises.reduce(
@@ -47,7 +46,6 @@ module.exports = {
       );
       workout.totalDuration = totalDuration;
       workout.save();
-      return console.log('Durations Worked Out!');
     }
   },
 };
