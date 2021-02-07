@@ -2,7 +2,7 @@ let mongoose = require('mongoose');
 const { getAllData, totalDurationSeed } = require('../controller/methods');
 let Workout = require('../models/schema');
 
-mongoose.connect('mongodb://localhost/workout', {
+mongoose.connect(process.env.dbURL || 'mongodb://localhost/workout', {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
